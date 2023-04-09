@@ -43,3 +43,9 @@ table, tr, td {
     justify-content: center;
     align-content: center;
 }
+
+.non-padding{
+    padding: 0;
+    border-radius: 0;
+    width: 50%;
+}

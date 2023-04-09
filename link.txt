@@ -1,0 +1,7 @@
+https://raw.githack.com/davidAnicca/CNMVAlgGenSite/master/site/index.html - dev
+
+
+https://rawcdn.githack.com/davidAnicca/CNMVAlgGenSite/c12e92b2f5b37e4964a6d40b4f8b88b07f671438/site/index.html - pro
+
+https://raw.githack.com/ - update
+
