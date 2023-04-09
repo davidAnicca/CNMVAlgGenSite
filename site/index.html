@@ -496,7 +496,12 @@
         </p>
 
         <p>
-            $$ C_i = {\{x_1, x_2, x_3, ... x_k\}} $$
+            $$ C_i = {\{x_1, x_2, x_3, ... x_n\}} $$
+            $$ C_i \subseteq D $$
+        </p>
+
+        <p>
+            <em>n</em> reprezintă lungimea cromozomului și de regulă este fixată pe tot parcursul problemei.
         </p>
 
         <p>
@@ -509,11 +514,11 @@
         </p>
 
         <p>
-            $$ P = \{ C_i \ | \ i \in \{1 ... p\} \} $$
+            $$ P = \{ C_i \ | \ i \in \{1 ... m\} \} $$
         </p>
 
         <p>
-            p - variabilă care indică numărul de indivizi din populația P.
+            m - variabilă care indică numărul de indivizi din populația P.
         </p>
 
         <p>
@@ -527,7 +532,127 @@
 
         <h4>Operatorii</h4>
 
+        <p>
+            Operatorii sunt funcții care modifică indivizi sau întreaga populație. Ei sunt inspirați din procesele de
+            selecție naturală.
+        </p>
 
+        <h4>
+            Funcția de fitness
+        </h4>
+
+        <p>
+            $$ f : P \rightarrow \mathbb{R} $$
+            $$f(C_i) = \sum\limits_{k=1}^{n} scor(x_k, C_i),\ \text{unde } x_k \in C_i$$
+        </p>
+
+        <p>
+            Această funcție atribuie un grad de potrivire la cerințele problemei. Ea pur și simplu calculează pentru
+            fiecare cromozom, raportat la informațiile pe care le reprezintă, cât este de potrivit pentru soluția
+            problemei.
+        </p>
+
+        <p>
+            De asemenea, funcția <em>scor</em> atribuie fiecărui genotip un grad de potrivire. Această funcție este
+            generică în acest punct și depinde foarte mult de datele problemei și tipul de rezultat dorit. Există cazuri
+            în care această funcție de scor calculează scorul unui element raportat la întreaga informație din cromozom
+            (vedeți la acorduri). De asemenea, pot exista informații "malițioase" într-un cromozom, astfel de informații
+            fiind "penalizate", rezultând un scor negativ care poate să coboare drastic fitness-ul întreg al unui
+            cromozom. Aceste cazuri își găsesc analogia în natură prin bolile genetice care implică șanse foarte
+            mici de supraviețuire.
+        </p>
+
+        <h4>Funcția de selecție</h4>
+
+        <p>
+            $$E = s(P)$$
+            $$s(P) = \{ C_i \in P \ | \ C_i \in P \text{ a fost selectat random bazat pe probabilitatea } p_{C_i} \}$$
+            $$ p_{C_i} = \frac{f(C_i)}{\sum\limits_{j=1}^{m} f(C_j)} $$
+        </p>
+
+        <p>
+            Această funcție de selecție respectă modelul <strong>ruletei de cazino</strong>. Pe scurt, probabilitatea ca
+            un individ să fie ales în E (elite) este direct proporțională cu fitness-ul acestuia. Cu alte cuvinte,
+            cromozomii cu fitness mare au șanse foarte mari să fie aleși. Cu toate acestea, pot fi aleși și cromozomi cu
+            fitness relativ mic (deoarece șansa lor nu este niciodată 0). Acest fenomen este totuși un beneficiu
+            deoarece chiar și cromozomii mai "slabi" pot deține informații care s-ar dovedi utile în viitoarele
+            generații.
+        </p>
+
+        <p>Există și alte forme de selecție precum <em>Reward-based selection</em> sau <em>Tournament selection</em>.
+        </p>
+
+        <h4>
+            Crossover
+        </h4>
+
+        <p>
+
+            $$ c : E^2 \rightarrow C^2 $$
+
+            $$ c(C_{mom}, C_{dad}) = \{C', C''\} $$
+            $$ C', C'' \in C $$
+
+            $$ C' = \{x^{mom}_i, x^{dad}_j \ | \ 1 \leq i \leq s < j \leq n\} $$
+            $$ C'' = \{x^{dad}_{i}, x^{mom}_{j} \ | \ 1 \leq i \leq s < {j} \leq n\}$$
+            $$\text{unde } x^{mom}_i \in C_{mom} \text{ și } x^{dad}_i \in C_{dad}$$
+        </p>
+
+        <p>
+            În acest punct, se aleg doi părinți (C<sub>mom</sub> și C<sub>dad</sub>) aleatoriu din mulțimea de elite E.
+            Cei doi cromozomi părinți trec prin procesul de crossover și rezultă doi cromozomi noi. Cromozomul C'
+            conține primele <em>s</em> informații de la mamă și restu de la tată. C'' conține fix invers: s de la tată
+            și restu de la mamă.
+        </p>
+
+        <p>
+            Astfel, <em>s</em> reprezintă un punct de joncțiune a cromozomilor, un număr (de regulă aleatoriu) cuprins
+            între 1 și lungimea cromozomului.
+        </p>
+
+        <p>
+            Pentru a asigura o nouă populație în noua generație, procesul de crossover se aplică în mod repetat pentru
+            doi indivizi din E până când se atinge un număr de cromozomi noi egal cu <em>m</em> (numărul de indivizi din
+            populație).
+        </p>
+
+        <h4>
+            Mutație
+        </h4>
+
+        <p>
+            $$m(C_i) = C_i - \{x_r\} + \{y\} $$
+            $$y \in D$$
+        </p>
+
+        <p>
+            Funcția m se aplică pentru a produce o mutație în cromozomul C<sub>i</sub>. De regulă, ea are loc doar
+            ocazional, potrivit unei variabile <em>mutation_rate</em> care descrie probabilitatea ca o mutație să apară.
+        </p>
+
+        <p>
+            În acest scenariu generic, o informație de pe o poziție <em>r</em> random este înlocuită de o altă
+            informație <em>y</em>, tot din domeniul problemei.
+        </p>
+
+        <h4>Noua generație</h4>
+
+        <p>
+            Toți cromozomii C' și C'' rezultați în urma operațiilor de crossover sunt introduși în populație. Mai
+            departe, populația este sortată descrescător în funcție de fitness-ul fiecărui individ. Se păstrează primii
+            <em>m</em> indivizi, restul fiind eliminați din populație.
+        </p>
+
+        <p>
+            $$P_{big} = P_{initial} + P_{children}$$
+            $$P_{sorted} = \{C_k \ | \ f(C_i) > f(C_j)\ ;\ 1 < i < j \leq m\ \ ;\ C_k \in P_{big}\}$$
+            $$P_{new} = \{C_i \ | \ C_i \in P_{sorted}; 1 \leq i \leq m\}$$
+        </p>
+
+        <h4>Final</h4>
+        <p>
+            După un număr finit g de generații, cromozomii cu cel mai înalt fitness pot reprezenta soluția finală.
+        </p>
 
     </div>
 </div>
