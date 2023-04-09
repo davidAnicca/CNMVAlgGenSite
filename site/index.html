@@ -38,7 +38,7 @@
             <li><a href="#selectia">
                 Selecția naturală
             </a></li>
-            <li><a href="#">
+            <li><a href="#algoritmi">
                 Algoritmi genetici
             </a></li>
             <li><a href="#">
@@ -350,6 +350,8 @@
         <p>Aceste ciuperci au o durată de viață limitată. Așadar, vorbim de o generație atunci când toate ciupercile din
             grupul inițial au murit și le-au luat locul "copiii" acestora.</p>
 
+        <img class="non-padding" alt="fungi gif" src="images/fungi.gif"/>
+
         <p>Cum în natură nu toate sunt frumoase, vom administra acestor ciuperci o substanță toxică (care are
             capacitatea de a le ucide). Vom numi această substanță FungiKiller.</p>
         <p>Chiar dacă o mare parte din populația de ciuperci moare la administrarea de FungiKiller, câteva
@@ -369,7 +371,8 @@
         </p>
 
         <p>
-            Materialul genetic condensat, gata să alcătuiască nucleul unui "embrion" este reprezentat <strong>cromozomi</strong>.
+            Materialul genetic condensat, gata să alcătuiască nucleul unui "embrion" este reprezentat
+            <strong>cromozomi</strong>.
             Ei
             dețin toată informația care definește un individ din punct de vedere genetic.
         </p>
@@ -380,14 +383,17 @@
             parte de la materialul matern poate fi preluat de materialul patern și viceversa.
         </p>
 
-        <img class="image" alt="crossover"
-             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Morgan_crossover_1.jpg/300px-Morgan_crossover_1.jpg"/>
+        <img class="non-padding" alt="crossover"
+             src="https://www.mrdubuque.com/uploads/2/4/5/0/24509062/anaphasei_orig.gif"/>
 
         <p>
             Pe lângă asta, în momentul reproducerii pot apărea și mutații (se modifică propriu-zis materialul genetic).
-            Acest lucru favorizează diversitatea genetică și cresc șansele apariției unor noi genotipuri utile (sau
+            Acest lucru favorizează diversitatea genetică și cresc șansele de apariție a unor noi genotipuri utile (sau
             nu).
         </p>
+
+        <img class="non-padding" alt="crossover"
+             src="images/mut.gif"/>
 
         <p>
             Pe scurt, doar ciupercile rezistente la FungiKiller vor fi capabile să se reproducă, rezultând indivizi care
@@ -396,9 +402,129 @@
 
         <p>În decurs de câteva generații, majoritatea ciupercilor vor fi rezistente la acest FungiKiller.</p>
 
+        <h4>Află mai multe:</h4>
+        <ul>
+            <li>
+                <a href="https://www.nature.com/articles/ismej201769.pdf">Experimental evolution</a>
+                and the dynamics of adaptation and genome evolution in microbial populations ~ Richard E Lenski 2017
+            </li>
+            <li>
+                <a href="https://openstax.org/books/concepts-biology/pages/11-1-discovering-how-populations-change">
+                    Evolution</a>
+                and the Diversity of Life ~ Samantha Fowler, Rebecca Roush, James Wise 2013
+            </li>
+            <li>
+                <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6944223/">Impact of Mutation Rate and
+                    Selection</a>
+                at Linked Sites on DNA Variation across the Genomes of Humans and Other Homininae ~ David
+                Castellano<sup>1,3</sup>,
+                Adam Eyre-Walker<sup>2</sup> and Kasper Munch<sup>1</sup> 2020
+            </li>
+            <li>
+                <a href="https://youtu.be/EDjRvQLJ9fY">Video</a> "Peștele din tine" ~ Cătălin Moise 2021
+            </li>
+            <li>
+                <a href="https://carturesti.ro/carte/odiseea-genelor-1104730773?gclid=Cj0KCQjwxMmhBhDJARIsANFGOSszgizM65XOfBOBI0lquLT8L0w4-zmtosmRyTbJisXeJnHY2DzGIjgaAgpTEALw_wcB">
+                    Odiseea genelor</a> - Aventura speciei umane ~ Evelyne Heyer 2021
+            </li>
+        </ul>
+
     </div>
 
 
+</div>
+
+<hr>
+<div id="algoritmi">
+    <h3>Algoritmi genetici</h3>
+
+    <div class="info">
+        <p>
+            <em>
+                Model building is the art of selecting those aspects of a process that are relevant to the question
+                being asked. As with any art, this selection is guided by taste, elegance, and metaphor; it is a matter
+                of induction, rather than deduction. High science depends on this art.
+            </em>
+        </p>
+        <p style="text-align: right"><em>~ John Henry Holland</em></p>
+        <p>
+            John Henry Holland a fost unul dintre pionierii algoritmică genetică. Holland a fost un cercetător și
+            profesor universitar american, cunoscut în special pentru contribuțiile sale în domeniul sistemelor adaptive
+            complexe și al algoritmică genetică.
+        </p>
+    </div>
+
+    <div class="info">
+        <p>
+            Știm foarte bine că știința nu cunoaște adevărul absolut. Dar asta nu înseamnă neapărat că știința cunoaște
+            doar adevărul relativ. În marea majoritate a științei, acesta se prezintă cu o altă valență: <em>adevărul
+            aproximativ</em>.
+        </p>
+        <p>
+            Limitarea conștiinței umane și a limbajului ne permit să selectăm doar o parte din input-urile și
+            output-urile sistemelor cu care interacționăm. Este adevărat că un inginer aerospațial nu trebuie să
+            cunoască sistemul circulator al păsării <em>Haliaeetus leucocephalus</em>, dar primul om care
+            s-a aruncat de la înălțime să încerce un aparat de zbor, a făcut-o cu aripi de lemn pe care a lipit pene.
+        </p>
+
+        <p>
+            Algoritmica genetică face același lucru: modelează un fenomen reținând doar caracteristicile și metodele de
+            care are nevoie în rezolvarea unei probleme. La fel ca în natură, un algoritm genetic este o metodă
+            (euristică) de căutare a unui rezultat <strong>optim</strong>.
+        </p>
+
+        <p>
+            Un algoritm genetic complet este un modul care poate primi (nu neapărat) un input și generează un output
+            optim (obligatoriu).
+        </p>
+
+        <p>
+            Orice algoritm evolutiv are două elemente esențiale:
+        </p>
+        <ol>
+            <li>Informații</li>
+            <li>Operatori genetici</li>
+        </ol>
+
+        <h4>Informațiile</h4>
+        <p>Informațiile unui algoritm genetic sunt reprezentate de <strong>domeniul de definiție</strong> al problemei.
+            Fiecare individ deține pachetul său de informație relevantă și se reduce doar la stadiul de
+            <strong>cromozom</strong> (informație propriu-zisă).
+        </p>
+        <p>
+            De regulă, un cromozom este reprezentat ca o mulțime de informații:
+        </p>
+
+        <p>
+            $$ C_i = {\{x_1, x_2, x_3, ... x_k\}} $$
+        </p>
+
+        <p>
+            În funcție de domeniul problemei și de rezultatul așteptat, această mulțime poate fi ordonată sau nu.
+        </p>
+
+        <p>
+            Indivizii sunt grupați într-o <strong>populație</strong>. Această populație este de fapt masa de date cu
+            care algoritmul lucrează.
+        </p>
+
+        <p>
+            $$ P = \{ C_i \ | \ i \in \{1 ... p\} \} $$
+        </p>
+
+        <p>
+            p - variabilă care indică numărul de indivizi din populația P.
+        </p>
+
+        <p>
+            Cu alte cuvinte, populația este totalitatea cromozomilor dintr-o generație.
+        </p>
+
+        <p>
+            Pe măsură ce trec generații în algoritmul genetic, populația P își schimbă indivizii în urma operatorilor
+            genetici care se aplică asupra lui P și a elementelor acestuia.
+        </p>
+    </div>
 </div>
 
 

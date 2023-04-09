@@ -2,6 +2,7 @@ body {
     background-color: #000;
     color: #fff;
     font-family: 'Consolas', monospace;
+    font-size: large;
     margin: 5%;
 }
 
@@ -45,6 +46,7 @@ table, tr, td {
 }
 
 .non-padding {
+    margin-left: 20%;
     padding: 0;
     border-radius: 0;
     width: 50%;
