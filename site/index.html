@@ -526,6 +526,10 @@
         </p>
 
         <p>
+            Prima populatie conține cromozomi cu informații aleatorii din domeniul D al problemei.
+        </p>
+
+        <p>
             Pe măsură ce trec generații în algoritmul genetic, populația P își schimbă indivizii în urma operatorilor
             genetici care se aplică asupra lui P și a elementelor acestuia.
         </p>
@@ -632,7 +636,12 @@
 
         <p>
             În acest scenariu generic, o informație de pe o poziție <em>r</em> random este înlocuită de o altă
-            informație <em>y</em>, tot din domeniul problemei.
+            informație <em>y</em> aleatoare, tot din domeniul problemei.
+        </p>
+
+        <p>
+            Mutația este esențială deoarece asigură că algoritmul nu se oprește cu căutarea într-un punct de maxim local
+            (fake optimal solution).
         </p>
 
         <h4>Noua generație</h4>
@@ -651,9 +660,9 @@
 
         <h4>Final</h4>
         <p>
-            După un număr finit g de generații, cromozomii cu cel mai înalt fitness pot reprezenta soluția finală.
+            După un număr finit g de generații, cromozomii cu cel mai înalt fitness pot reprezenta soluția finală
+            (potențial optimă).
         </p>
-
     </div>
 </div>
 
