@@ -41,7 +41,7 @@
             <li><a href="#algoritmi">
                 Algoritmi genetici
             </a></li>
-            <li><a href="#">
+            <li><a href="#chord_ga">
                 Algoritm genetic pentru generarea unui acord muzical
             </a></li>
             <li><a href="#">
@@ -475,8 +475,21 @@
 
         <p>
             Un algoritm genetic complet este un modul care poate primi (nu neapărat) un input și generează un output
-            optim (obligatoriu).
+            <strong>optim</strong> (obligatoriu).
         </p>
+
+        <br><br>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Parental_Advisory_label.svg/1200px-Parental_Advisory_label.svg.png"
+             alt="Explicit content" class="non-padding">
+
+
+        <p>
+            <em>Spoiler ~ urmează mate :&lt;</em>
+        </p>
+        <p>
+            <em>Nu dați skip, nu e chiar așa rău...</em>
+        </p>
+        <br><br>
 
         <p>
             Orice algoritm evolutiv are două elemente esențiale:
@@ -663,7 +676,192 @@
             După un număr finit g de generații, cromozomii cu cel mai înalt fitness pot reprezenta soluția finală
             (potențial optimă).
         </p>
+
+        <h4>Află mai multe:</h4>
+
+        <ul>
+            <li>
+                <a href="https://carturesti.ro/carte/computerul-si-creierul-1795677073">
+                    Computerul și creierul</a> ~ John Von Neumann 2022 (traducere RO)
+            </li>
+            <li>
+                <a href="https://onlinelibrary.wiley.com/doi/pdf/10.1002/cplx.6130010108">
+                    Genetic algorithms</a>: An overview ~ M. Mitchell 1995
+            </li>
+            <li>
+                <a href="https://www.geos.ed.ac.uk/~mscgis/12-13/s1100074/Holland.pdf">
+                    Genetic Algorithms</a> ~ John H. Holland 1992
+            </li>
+            <li>
+                <a href="https://www.youtube.com/watch?v=N3tRFayqVtk">Video</a>
+                ~ Simulated creatures by <em>davidrandallmiller</em> 2021
+            </li>
+            <li>
+                <a href="https://www.youtube.com/watch?v=0ZGbIKd0XrM">Video</a>
+                ~ Simulating natural selection by <em>Primer</em> 2019
+            </li>
+        </ul>
+
     </div>
+</div>
+
+<hr>
+<div id="chord_ga">
+    <h3>
+        Algoritm genetic pentru generarea unui acord muzical
+    </h3>
+
+    <div class="info">
+        <p>
+            <em>
+                Info nu are nicio treabă cu matematica.
+            </em>
+        </p>
+        <p style="text-align: right"><em>~ Nimeni nu a spus asta niciodată.</em></p>
+    </div>
+
+    <div class="info">
+        <p>
+            Mai puțin grea decât viața poate fi și matematica. Uneori mai grea. Acum că ne-am supraîncălzit suficient
+            sinapsele în
+            efortul de a înțelege <em>o parte</em> din substratul matematic al acestor algoritmi minune, e timpul să ne
+            aruncăm cu voioșie în adevărata aventură a acestui efort comun: <strong>să facem
+            calculatorul să cânte frumos</strong> (...oarecum).
+        </p>
+
+        <img class="non-padding" alt="math adventure highly descriptive gif"
+             src="https://media.tenor.com/G0gv_x33k40AAAAC/math-thinking.gif">
+
+        <p>
+            A venit momentul să punem în practică toată franceza de mai sus. Începem cu prima parte: acordul
+            propriu-zis.
+        </p>
+
+        <h4>Acordul</h4>
+
+        <p>
+            În algoritmul nostru, un acord este format din <strong>4</strong> sunete independente.
+        </p>
+
+        <pre>
+            <code class="hljs-string">
+                f1
+                f2
+                f3
+                f4
+            </code>
+        </pre>
+
+        <p>
+            Fiecare din aceste f<sub>i</sub> este un număr <strong>real</strong> cuprins între 110.0 și 180.0
+        </p>
+
+        <p>
+            Pentru a putea cânta cele 4 frecvențe (note) simultan, va trebui să le construim sinusoida (conform
+            formulei) și apoi să le adunăm rezultatul într-o "waveform" de sumă.
+        </p>
+
+        <pre>
+                <strong>Subalgoritm</strong> CântăAcord(note: <strong>list</strong>):
+                    sinusoida <- 0
+                    <strong>Pentru fiecare</strong> notă <strong>în</strong> note <strong>execută:</strong>
+                        sinus_singur <- 0.1 * sin(2 * pi * nota)
+                        sinusoida <- sinusoida + sinus_singur
+                    <strong>SfârșitPentru</strong>
+                    <strong>Cântă</strong>(sinusoida)
+                <strong>SfârșitSubalgoritm</strong>
+        </pre>
+
+        <h4>Informația</h4>
+
+        <ul>
+            <li>
+                <strong>Cromozomul:</strong> o listă de 4 frecvențe.
+            </li>
+            <li>
+                <strong>Populația:</strong> o listă (finită) de cromozomi.
+            </li>
+            <li>
+                <strong>Generația:</strong> populația la un anumit moment (înainte de selecție).
+            </li>
+        </ul>
+
+        <h4>Funcția de fitness</h4>
+
+        <pre>
+            <strong>Funcție</strong> fitness(cromozom):
+                scor_total <- 0
+            <strong>Pentru</strong> i <- 0, <strong>lungime</strong>(cromozom) <strong>execută:</strong>
+                    <strong>Pentru</strong> j <- i + 1, <strong>lungime</strong>(cromozom) <strong>execută:</strong>
+                        fracție <-  <strong>max</strong>{ cromozom[i], cromozom[j] } /
+                                    <strong>min</strong>{ cromozom[i], cromozom[j] }
+                        scor_total <- scor_total
+                                        + <strong>Scor</strong>(
+                                            fracție,
+                                            |cromozom[i] - cromozom[j]|
+                                            )
+                    <strong>SfârșitPentru</strong>
+            <strong>Returnează</strong> scorTotal
+            <strong>SfârșitFuncție</strong>
+        </pre>
+
+        <p>
+            În fitness luăm dintr-un cromozom frecvențele două câte două și calculăm raportul dintre frecvența <strong>mai
+            mare</strong> și frecvența <strong>mai mică</strong>.
+        </p>
+
+        <p>
+            Acel raport (fracție) va fi apoi evaluat după cum urmează în funcția de Scor:
+        </p>
+
+        <pre>
+            <em>dif <- diferența în modul dintre cele două note (distanța geometrică dintre ele)</em>
+            <br>
+            <strong>Funcție</strong> Scor(fracție, dif):
+                scor <- 0
+                <strong>Dacă</strong> AproapeEgale(fracție, 2) <strong>atunci:</strong>
+                    scor <- scor + 500
+                <strong>AltfelDacă</strong> AproapeEgale(fracție, 3 / 2) <strong>atunci:</strong>
+                    scor <- scor + 300
+                <strong>AltfelDacă</strong> AproapeEgale(fracție, 4 / 3) <strong>atunci:</strong>
+                    scor <- scor + 100
+                <strong>AltfelDacă</strong> AproapeEgale(fracție, 6 / 5) <strong>atunci:</strong>
+                    scor <- scor + 200
+                <strong>AltfelDacă</strong> AproapeEgale(fracție, 1) <strong>atunci:</strong>
+                    scor <- scor - 300
+                <strong>AltfelDacă</strong> fracție > 5 <strong>atunci:</strong>
+                    scor <- scor - 1000
+                <strong>AltfelDacă</strong> dif < 20 <strong>atunci:</strong>
+                    scor <- scor - 2000
+                <strong>SfârșitDacăAltfel</strong>
+                <strong>Returnează</strong> scor
+            <strong>SfârșitFuncție</strong>
+        </pre>
+
+        <p>
+            Așa calculăm scorul unui raport. Începem cu fracții bune (octava 2:1, cvinta 3:2 ...) care dau scor bun și
+            terminăm cu fracții mari sau aproape de 1 care penalizează acordul.
+        </p>
+
+        <p>
+            Funcția AproapeEgale este definită astfel:
+        </p>
+
+        <pre>
+                <strong>Funcție</strong> AproapeEgale(x, y):
+                    <strong>Returnează </strong> | x - y | < 0.001
+                <strong>SfârșitFuncție</strong>
+        </pre>
+
+        <p>
+            Această funcție asigură "egalitatea" aproximativă dintre două valori reale (diferența mai mică de 0.001 este
+            neglijabilă). Ea se poate regla pentru precizie cu valori mai mari sau mai mici (0.000001 de exemplu ~
+            inutil în
+            acest moment).
+        </p>
+
+    </div>
+
 </div>
 
 
