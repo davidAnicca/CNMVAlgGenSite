@@ -762,14 +762,14 @@
         </p>
 
         <pre>
-                <strong>Subalgoritm</strong> CântăAcord(note: <strong>list</strong>):
-                    sinusoida <- 0
-                    <strong>Pentru fiecare</strong> notă <strong>în</strong> note <strong>execută:</strong>
-                        sinus_singur <- 0.1 * sin(2 * pi * nota)
-                        sinusoida <- sinusoida + sinus_singur
-                    <strong>SfârșitPentru</strong>
-                    <strong>Cântă</strong>(sinusoida)
-                <strong>SfârșitSubalgoritm</strong>
+                ┌ <strong>Subalgoritm</strong> CântăAcord(note: <strong>list</strong>):
+                |     sinusoida <- 0
+                |    ┌ <strong>Pentru fiecare</strong> notă <strong>din</strong> note <strong>execută:</strong>
+                |    |     sinus_singur <- 0.1 * sin(2 * pi * nota)
+                |    |     sinusoida <- sinusoida + sinus_singur
+                |    └■
+                |     <strong>Cântă</strong>(sinusoida)
+                └■
         </pre>
 
         <h4>Informația</h4>
@@ -789,21 +789,26 @@
         <h4>Funcția de fitness</h4>
 
         <pre>
-            <strong>Funcție</strong> fitness(cromozom):
-                scor_total <- 0
-            <strong>Pentru</strong> i <- 0, <strong>lungime</strong>(cromozom) <strong>execută:</strong>
-                    <strong>Pentru</strong> j <- i + 1, <strong>lungime</strong>(cromozom) <strong>execută:</strong>
-                        fracție <-  <strong>max</strong>{ cromozom[i], cromozom[j] } /
-                                    <strong>min</strong>{ cromozom[i], cromozom[j] }
-                        scor_total <- scor_total
-                                        + <strong>Scor</strong>(
-                                            fracție,
-                                            |cromozom[i] - cromozom[j]|
-                                            )
-                    <strong>SfârșitPentru</strong>
-            <strong>Returnează</strong> scorTotal
-            <strong>SfârșitFuncție</strong>
+           ┌ <strong>Funcție</strong> fitness(cromozom):
+           |    scor_total <- 0
+           |    ┌ <strong>Pentru</strong> i <- 0, <strong>lungime</strong>(cromozom) <strong>execută:</strong>
+           |    |   ┌ <strong>Pentru</strong> j <- i + 1, <strong>lungime</strong>(cromozom) <strong>execută:</strong>
+           |    |   |    fracție <-  <strong>max</strong>{ cromozom<sub>i</sub>, cromozom<sub>j</sub> } /
+           |    |   |               <strong>min</strong>{ cromozom<sub>i</sub>, cromozom<sub>j</sub> }
+           |    |   |    scor_total <- scor_total
+           |    |   |                   + <strong>Scor</strong>(
+           |    |   |                       fracție,
+           |    |   |                       |cromozom<sub>i</sub> - cromozom<sub>j</sub>|
+           |    |   |                       )
+           |    |   └■
+           |    └■
+           |    <strong>Returnează</strong> scorTotal
+           └■
         </pre>
+
+        <p>
+            În acest caz |x| nu reprezintă altceva decât modulul unei valori x.
+        </p>
 
         <p>
             În fitness luăm dintr-un cromozom frecvențele două câte două și calculăm raportul dintre frecvența <strong>mai
@@ -817,25 +822,25 @@
         <pre>
             <em>dif <- diferența în modul dintre cele două note (distanța geometrică dintre ele)</em>
             <br>
-            <strong>Funcție</strong> Scor(fracție, dif):
-                scor <- 0
-                <strong>Dacă</strong> AproapeEgale(fracție, 2) <strong>atunci:</strong>
-                    scor <- scor + 500
-                <strong>AltfelDacă</strong> AproapeEgale(fracție, 3 / 2) <strong>atunci:</strong>
-                    scor <- scor + 300
-                <strong>AltfelDacă</strong> AproapeEgale(fracție, 4 / 3) <strong>atunci:</strong>
-                    scor <- scor + 100
-                <strong>AltfelDacă</strong> AproapeEgale(fracție, 6 / 5) <strong>atunci:</strong>
-                    scor <- scor + 200
-                <strong>AltfelDacă</strong> AproapeEgale(fracție, 1) <strong>atunci:</strong>
-                    scor <- scor - 300
-                <strong>AltfelDacă</strong> fracție > 5 <strong>atunci:</strong>
-                    scor <- scor - 1000
-                <strong>AltfelDacă</strong> dif < 20 <strong>atunci:</strong>
-                    scor <- scor - 2000
-                <strong>SfârșitDacăAltfel</strong>
-                <strong>Returnează</strong> scor
-            <strong>SfârșitFuncție</strong>
+            ┌ <strong>Funcție</strong> Scor(fracție, dif):
+            |    scor <- 0
+            |    ┌ <strong>Dacă</strong> AproapeEgale(fracție, 2) <strong>atunci:</strong>
+            |    |    scor <- scor + 500
+            |    | <strong>AltfelDacă</strong> AproapeEgale(fracție, 3 / 2) <strong>atunci:</strong>
+            |    |    scor <- scor + 300
+            |    | <strong>AltfelDacă</strong> AproapeEgale(fracție, 4 / 3) <strong>atunci:</strong>
+            |    |    scor <- scor + 100
+            |    | <strong>AltfelDacă</strong> AproapeEgale(fracție, 6 / 5) <strong>atunci:</strong>
+            |    |    scor <- scor + 200
+            |    | <strong>AltfelDacă</strong> AproapeEgale(fracție, 1) <strong>atunci:</strong>
+            |    |   scor <- scor - 300
+            |    | <strong>AltfelDacă</strong> fracție > 5 <strong>atunci:</strong>
+            |    |    scor <- scor - 1000
+            |    | <strong>AltfelDacă</strong> dif < 20 <strong>atunci:</strong>
+            |    |    scor <- scor - 2000
+            |    └■
+            |    <strong>Returnează</strong> scor
+            └■
         </pre>
 
         <p>
@@ -848,17 +853,54 @@
         </p>
 
         <pre>
-                <strong>Funcție</strong> AproapeEgale(x, y):
-                    <strong>Returnează </strong> | x - y | < 0.001
-                <strong>SfârșitFuncție</strong>
+                ┌ <strong>Funcție</strong> AproapeEgale(x, y):
+                |   <strong>Returnează </strong> | x - y | < 0.001
+                └■
         </pre>
 
         <p>
             Această funcție asigură "egalitatea" aproximativă dintre două valori reale (diferența mai mică de 0.001 este
             neglijabilă). Ea se poate regla pentru precizie cu valori mai mari sau mai mici (0.000001 de exemplu ~
-            inutil în
-            acest moment).
+            inutil de precis în acest moment).
         </p>
+
+        <h4>
+            Funcția de selecție
+        </h4>
+        <p>
+            În această funcție selectăm <em>elitele</em> folosind probabilitatea acestora de a fi alese. Această
+            probabilitate este direct proporțională cu scorul de fitness
+        </p>
+
+        <pre>
+            <em>RouletteSelection -> returnează o listă de cromozomi</em>
+
+            ┌ <strong>Funcție</strong> RouletteSelection(dimensiune):
+            |    suma_totală <- 0
+            |    ┌ <strong>Pentru fiecare</strong> cromozom <strong>din</strong> populație <strong>execută:</strong>
+            |    |   suma_totală <- suma_totală + <strong>Fitness</strong>(cromozom)
+            |    └■
+            |    elite <- []
+            |    ┌ <strong>CâtTimp lungime</strong>(elite) < dimensiune <strong>execută:</strong>
+            |    |    r <- <strong>RealAleatoriuÎntre</strong>(0, suma_totală)
+            |    |    fitness_acumulativ <- 0
+            |    |    ┌ <strong>Pentru fiecare</strong> cromozom <strong>din</strong> populație <strong>execută:</strong>
+            |    |    |    fitness_acumulativ <- fitness_acumulativ + <strong>Fitness</strong>(cromozom)
+            |    |    |    ┌ <strong>Dacă</strong> fitness_acumulativ > r <strong>atunci:</strong>
+            |    |    |    |    elite <- elite (+) cromozom
+            |    |    |    |    <strong>ieșireWhile</strong>
+            |    |    |    └■
+            |    |    |
+            |    |    └■
+            |    └■
+            |    <strong>Returnează</strong> elite
+            └■
+        </pre>
+
+        <p><strong>RealAleatoriuÎntre(x, y)</strong> returnează un număr real aleatoriu între x și y inclusiv.</p>
+
+        <p>Aici <em>colecție <- colecție (+) element</em> înseamnă pur și simplu <strong>adăugarea unui element la o
+            colecție (lista respectivă).</strong></p>
 
     </div>
 
