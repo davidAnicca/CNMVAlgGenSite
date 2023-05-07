@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css" type="text/css">
@@ -539,7 +539,7 @@
         </p>
 
         <p>
-            Prima populatie conține cromozomi cu informații aleatorii din domeniul D al problemei.
+            Prima populație conține cromozomi cu informații aleatorii din domeniul D al problemei.
         </p>
 
         <p>
@@ -579,7 +579,7 @@
             mici de supraviețuire.
         </p>
 
-        <h4>Funcția de selecție</h4>
+        <h4 id="selection">Funcția de selecție</h4>
 
         <p>
             $$E = s(P)$$
@@ -733,8 +733,20 @@
              src="https://media.tenor.com/G0gv_x33k40AAAAC/math-thinking.gif">
 
         <p>
-            A venit momentul să punem în practică toată franceza de mai sus. Începem cu prima parte: acordul
-            propriu-zis.
+            A venit momentul să punem în practică toată franceza de mai sus. Trebuie menționat faptul că problema
+            acordurilor este una strict demonstrativă. Algoritmii evolutivi se folosesc pentru a rezolva probleme de
+            optimizare cu mult-mult mai multe date. Ele sunt folosite atunci când o soluție convențională (programare
+            dinamică, greedy, backtracking ș.a.m.d.) devin prea costisitoare (ca implementare, complexitate de timp sau
+            memorie) ~ <em>vezi bibliografie pentru exemple</em>.
+        </p>
+
+        <h4>
+            Scopul progrămelului
+        </h4>
+
+        <p>
+            Programul va rula câteva secunde și va emite un <strong>sunet</strong>. Acest sunet va fi de
+            fapt un acord muzical despre care avem speranța că va suna bine.
         </p>
 
         <h4>Acordul</h4>
@@ -752,155 +764,120 @@
             </code>
         </pre>
 
-        <p>
-            Fiecare din aceste f<sub>i</sub> este un număr <strong>real</strong> cuprins între 110.0 și 180.0
-        </p>
+        <h4>Începuturile</h4>
 
         <p>
-            Pentru a putea cânta cele 4 frecvențe (note) simultan, va trebui să le construim sinusoida (conform
-            formulei) și apoi să le adunăm rezultatul într-o "waveform" de sumă.
+            Fiecare <strong>cromozom</strong> va fi o simplă listă de frecvențe.
         </p>
 
         <pre>
-                ┌ <strong>Subalgoritm</strong> CântăAcord(note: <strong>list</strong>):
-                |     sinusoida <- 0
-                |    ┌ <strong>Pentru fiecare</strong> notă <strong>din</strong> note <strong>execută:</strong>
-                |    |     sinus_singur <- 0.1 * sin(2 * pi * nota)
-                |    |     sinusoida <- sinusoida + sinus_singur
-                |    └■
-                |     <strong>Cântă</strong>(sinusoida)
-                └■
+            <code class="hljs-string">
+                [f1, f2, f3, f4]
+            </code>
         </pre>
 
-        <h4>Informația</h4>
+        <p>Populația inițială va fi generată automat cu acorduri formate din frecvențe <strong>aleatorii</strong>. Așa
+            cum vă puteți imagina, o adunătură de 4 sunete aleatorii nu sună excepțional. Iată mai jos un buton dubios
+            care va genera un astfel de acord <em>random</em>.</p>
 
-        <ul>
-            <li>
-                <strong>Cromozomul:</strong> o listă de 4 frecvențe.
-            </li>
-            <li>
-                <strong>Populația:</strong> o listă (finită) de cromozomi.
-            </li>
-            <li>
-                <strong>Generația:</strong> populația la un anumit moment (înainte de selecție).
-            </li>
-        </ul>
+        <table>
+            <tr>
+                <th>f1</th>
+                <th>f2</th>
+                <th>f3</th>
+                <th>f5</th>
+            </tr>
+            <tr>
+                <td id="f1"></td>
+                <td id="f2"></td>
+                <td id="f3"></td>
+                <td id="f4"></td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <div style="text-align: center">
+                        <button class="listen" onclick="playRandom()"></button>
+                    </div>
+                </td>
+            </tr>
+        </table>
 
-        <h4>Funcția de fitness</h4>
+        <h4>Parcursul algoritmului</h4>
 
-        <pre>
-           ┌ <strong>Funcție</strong> fitness(cromozom):
-           |    scor_total <- 0
-           |    ┌ <strong>Pentru</strong> i <- 0, <strong>lungime</strong>(cromozom) <strong>execută:</strong>
-           |    |   ┌ <strong>Pentru</strong> j <- i + 1, <strong>lungime</strong>(cromozom) <strong>execută:</strong>
-           |    |   |    fracție <-  <strong>max</strong>{ cromozom<sub>i</sub>, cromozom<sub>j</sub> } /
-           |    |   |               <strong>min</strong>{ cromozom<sub>i</sub>, cromozom<sub>j</sub> }
-           |    |   |    scor_total <- scor_total
-           |    |   |                   + <strong>Scor</strong>(
-           |    |   |                       fracție,
-           |    |   |                       |cromozom<sub>i</sub> - cromozom<sub>j</sub>|
-           |    |   |                       )
-           |    |   └■
-           |    └■
-           |    <strong>Returnează</strong> scorTotal
-           └■
-        </pre>
+        <ol>
+            <li>Generare prima populație.</li>
+            <li>Pentru fiecare generație:</li>
+            <ol type="1">
+                <li>Selectează elite (<strong>selecție</strong>).</li>
+                <li>De (nr. de indivizi/populație)/2 ori:</li>
 
-        <p>
-            În acest caz |x| nu reprezintă altceva decât modulul unei valori x.
-        </p>
+                <em>Împărțim la 2 pentru că se generează câte doi "copii" la fiecare pas.</em>
 
-        <p>
-            În fitness luăm dintr-un cromozom frecvențele două câte două și calculăm raportul dintre frecvența <strong>mai
-            mare</strong> și frecvența <strong>mai mică</strong>.
-        </p>
+                <ol>
+                    <li>Alege 2 indivizi aleatorii <em>MOM</em>, <em>DAD</em></li>
+                    <li>Împerechere MOM & DAD (<strong>crossover</strong>) -> {CHILD1, CHILD2}.</li>
+                    <li>Aplică <strong>mutație</strong> pe CHILD1 și CHILD2.</li>
+                    <li>Adaugă CHILD1 și CHILD2 în populație.</li>
+                </ol>
+                <li>Sortează descrescător după <strong>fitness</strong> noua populație.</li>
+                <li>Elimină din coadă ultimii indivizi (jumătate).</li>
+            </ol>
+            <li>Sortează descrescător populația după <strong>fitness</strong>.</li>
+            <li>Cântă primul <strong>cromozom</strong>.</li>
+        </ol>
 
-        <p>
-            Acel raport (fracție) va fi apoi evaluat după cum urmează în funcția de Scor:
-        </p>
-
-        <pre>
-            <em>dif <- diferența în modul dintre cele două note (distanța geometrică dintre ele)</em>
-            <br>
-            ┌ <strong>Funcție</strong> Scor(fracție, dif):
-            |    scor <- 0
-            |    ┌ <strong>Dacă</strong> AproapeEgale(fracție, 2) <strong>atunci:</strong>
-            |    |    scor <- scor + 500
-            |    | <strong>AltfelDacă</strong> AproapeEgale(fracție, 3 / 2) <strong>atunci:</strong>
-            |    |    scor <- scor + 300
-            |    | <strong>AltfelDacă</strong> AproapeEgale(fracție, 4 / 3) <strong>atunci:</strong>
-            |    |    scor <- scor + 100
-            |    | <strong>AltfelDacă</strong> AproapeEgale(fracție, 6 / 5) <strong>atunci:</strong>
-            |    |    scor <- scor + 200
-            |    | <strong>AltfelDacă</strong> AproapeEgale(fracție, 1) <strong>atunci:</strong>
-            |    |   scor <- scor - 300
-            |    | <strong>AltfelDacă</strong> fracție > 5 <strong>atunci:</strong>
-            |    |    scor <- scor - 1000
-            |    | <strong>AltfelDacă</strong> dif < 20 <strong>atunci:</strong>
-            |    |    scor <- scor - 2000
-            |    └■
-            |    <strong>Returnează</strong> scor
-            └■
-        </pre>
+        <h4>
+            Fitness
+        </h4>
 
         <p>
-            Așa calculăm scorul unui raport. Începem cu fracții bune (octava 2:1, cvinta 3:2 ...) care dau scor bun și
-            terminăm cu fracții mari sau aproape de 1 care penalizează acordul.
-        </p>
-
-        <p>
-            Funcția AproapeEgale este definită astfel:
-        </p>
-
-        <pre>
-                ┌ <strong>Funcție</strong> AproapeEgale(x, y):
-                |   <strong>Returnează </strong> | x - y | < 0.001
-                └■
-        </pre>
-
-        <p>
-            Această funcție asigură "egalitatea" aproximativă dintre două valori reale (diferența mai mică de 0.001 este
-            neglijabilă). Ea se poate regla pentru precizie cu valori mai mari sau mai mici (0.000001 de exemplu ~
-            inutil de precis în acest moment).
+            Funcția de fitness va lua frecvențele dintr-un cromozom (două câte două) și va calcula un
+            <strong>scor</strong> în funcție de raportul dintre cele două frecvențe. Frecvențele prea apropiate sau cu
+            un raport foarte mic vor genera <strong>penalizarea</strong> scorului pe întregul cromozom (ceea ce îl va
+            pune mereu undeva pe la coada listei).
         </p>
 
         <h4>
-            Funcția de selecție
+            Selecție
         </h4>
+
         <p>
-            În această funcție selectăm <em>elitele</em> folosind probabilitatea acestora de a fi alese. Această
-            probabilitate este direct proporțională cu scorul de fitness
+            Selecția elitelor se face conform <a href="#selection">formulei</a> de selecție ruletă (bazată pe
+            probabilități).
         </p>
 
-        <pre>
-            <em>RouletteSelection -> returnează o listă de cromozomi</em>
+        <h4>Crossover</h4>
 
-            ┌ <strong>Funcție</strong> RouletteSelection(dimensiune):
-            |    suma_totală <- 0
-            |    ┌ <strong>Pentru fiecare</strong> cromozom <strong>din</strong> populație <strong>execută:</strong>
-            |    |   suma_totală <- suma_totală + <strong>Fitness</strong>(cromozom)
-            |    └■
-            |    elite <- []
-            |    ┌ <strong>CâtTimp lungime</strong>(elite) < dimensiune <strong>execută:</strong>
-            |    |    r <- <strong>RealAleatoriuÎntre</strong>(0, suma_totală)
-            |    |    fitness_acumulativ <- 0
-            |    |    ┌ <strong>Pentru fiecare</strong> cromozom <strong>din</strong> populație <strong>execută:</strong>
-            |    |    |    fitness_acumulativ <- fitness_acumulativ + <strong>Fitness</strong>(cromozom)
-            |    |    |    ┌ <strong>Dacă</strong> fitness_acumulativ > r <strong>atunci:</strong>
-            |    |    |    |    elite <- elite (+) cromozom
-            |    |    |    |    <strong>ieșireWhile</strong>
-            |    |    |    └■
-            |    |    |
-            |    |    └■
-            |    └■
-            |    <strong>Returnează</strong> elite
-            └■
+        <p> La crossover se alege un punct aleatoriu de <strong>joncțiune</strong> pentru cei doi părinți. Se combină
+            apoi informațiile pentru a genera cei doi copii</p>
+
+        <pre>
+            MOM:
+            <span style="color: #ff0000;"> m1 m2</span><span style="color: #00ff00;"> m3 m4</span>
+            DAD:
+            <span style="color: #ff0000;"> t1 t2</span><span style="color: #00ff00;"> t3 t4</span>
+            =>
+            CHILD1:
+            <span style="color: #ff0000;"> m1 m2</span><span style="color: #00ff00;"> t3 t4</span>
+            CHILD2:
+            <span style="color: #00ff00;"> m3 m4</span><span style="color: #ff0000;"> t1 t2</span>
         </pre>
 
-        <p><strong>RealAleatoriuÎntre(x, y)</strong> returnează un număr real aleatoriu între x și y inclusiv.</p>
+        <h4>
+            Mutația
+        </h4>
 
-        <p>Aici <em>colecție <- colecție (+) element</em> înseamnă pur și simplu <strong>adăugarea unui element la o
-            colecție (lista respectivă).</strong></p>
+        <p>
+            La mutație se ia o frecvență și i se schimbă valoarea cu una aleatoare. Mutația are loc <strong>doar
+            dacă</strong> un număr local generat random este mai mic decât <strong>factorul de mutație</strong>.
+        </p>
+        <pre>
+                f1
+                <s> f2 </s> random()
+                f3
+                f4
+        </pre>
+
 
     </div>
 
