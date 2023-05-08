@@ -23,7 +23,7 @@
         <em>Școala Altfel</em>.
     </p>
     <p>
-        <em>Prof. îndrumător: Ligia Mînican</em>
+        <em>Prof. Îndrumător: Ligia Mînican</em>
     </p>
 </div>
 
@@ -47,7 +47,7 @@
             <li><a href="#py">
                 Introducere în Python
             </a></li>
-            <li><a href="#">
+            <li><a href="#code">
                 Codul sursă
             </a></li>
         </ol>
@@ -700,6 +700,9 @@
                 <a href="https://www.youtube.com/watch?v=0ZGbIKd0XrM">Video</a>
                 ~ Simulating natural selection by <em>Primer</em> 2019
             </li>
+            <li>
+
+            </li>
         </ul>
 
     </div>
@@ -890,11 +893,11 @@
         <ul>
             <li>
                 <a href="https://www.geeksforgeeks.org/traveling-salesman-problem-using-genetic-algorithm/">
-                    Traveling Salesman Problem</a>  using Genetic Algorithm ~ G4G
+                    Traveling Salesman Problem</a> using Genetic Algorithm ~ G4G
             </li>
             <li>
                 <a href="https://proteomesci.biomedcentral.com/articles/10.1186/1477-5956-11-S1-S19">
-                    Împachetare proteine</a>  folosind un algoritm genetic ~ Jyh-Jong Tsay & Shih-Chieh Su
+                    Împachetare proteine</a> folosind un algoritm genetic ~ Jyh-Jong Tsay & Shih-Chieh Su
             </li>
         </ul>
 
@@ -907,12 +910,197 @@
     <div class="info">
         <h4>Ce este python?</h4>
         <p>
-            Python este un limbaj de programare interpretat (spre deosebire de c++ care este compilat) și este o
-            tehnologie de uz general în informatică.
+            Python este un limbaj de programare de nivel înalt (ca și C++, Java, C# etc.) de uz <strong>general</strong>.
+            Istoria lui începe de la Guido van Rossum în 1989 și continuă să fie dezvoltat și astăzi în comunitate
+            open-source.
         </p>
+
+        <h4>De ce Python acum?</h4>
+        <p>
+            Pentru tine, drag cititor potențial licean, în aparență Python este o noutate. Am ales să fac acest
+            sacrificiu pentru a lăsa mai mult loc conceptului, decât codului. Există câteva motive pentru care am decis
+            să exemplific algoritmii evolutivi folosind această tehnologie.
+        </p>
+        <h4>Sintaxă simplă</h4>
+        <p>
+            Spre deosebire de C++, Python vine cu avantajul unei sintaxe clare și concise. Dacă vrei, imaginează-ți
+            <em>pseudocode</em> în limba engleză și voila, e aproape Python. Asta îl face ușor de învățat și înțeles,
+            orice bucată de cod devenind o <em>poveste</em> foarte apropiată de limbajul uman.
+        </p>
+
+        <pre>
+            <code class="python">
+                movies = ["Matrix", "Enter The Void", "Mirror"]
+                for movie in movies:
+                    print("Must see:", movie)
+            </code>
+        </pre>
+
+        <h4>Potrivit pentru AI</h4>
+        <p>
+            Modelarea rețelelor neuronale este foarte bine dezvoltată în Python. Există o mulțime de <em>biblioteci</em>
+            (pachete) pe care chiar tu le poți folosi pentru a construi programe de inteligență artificială. Unul dintre
+            ele este <a href="https://scikit-learn.org/stable/">scikit-learn</a> care oferă o serie de implementări ale
+            algoritmilor de învățare automată.
+        </p>
+
+        <h4>Instalare</h4>
+        <p>
+            Pe <a href="https://www.python.org/downloads/">site-ul</a> oficial se află ultima versiune (Python 3). Se
+            poate instala pe Windows, Mac și Linux. Opțional, pentru eficiență, în dialogul de instalare se poate bifa
+            căsuța care adaugă programul în PATH.
+        </p>
+
+        <h4>Pachetele folosite</h4>
+        <p>
+            În codul sursă din capitolul următor am folosit o serie de pachete care trebuie instalate pentru a rula.
+        </p>
+        <p>
+            <a href="https://pypi.org/project/PyAudio/">PyAudio</a> este pachetul pe care îl includ în proiect pentru a
+            putea reda sunetele.
+        </p>
+        <p>
+            <a href="https://numpy.org/">Numpy</a> este un pachet de utilități științifice (matematică) iar eu îl
+            folosesc pentru a modela funcția <strong>sin()</strong>.
+        </p>
+
+        <h4>Cum rulez?</h4>
+
+        <p>Dacă ești interesat doar de acest proiect, consider că este suficient să explorezi codul în Notepad sau IDLE
+            (open with IDLE, un program care vine instalat odată cu Python).</p>
+        <p>Pentru a rula programul trebuie doar să dai dublu click pe fișierul cu extensia .py iar acesta va rula. În
+            cadrul acestui proiect, el se va numi "main.py". Dacă ești în IDLE poți tasta <strong>F5</strong> sau
+            <strong>Run Module</strong> din meniul aplicației.
+        </p>
+        <p>Nu este foarte greu să rulăm Python. Pentru neclarități puteți accesa tutoriale.</p>
+
+        <h4>Vrei mai mult?</h4>
+
+        <p>Dacă dorești să continui "studiul" Python, recomand instalarea unui IDE performant. Din propria mea
+            experiență, cel mai potrivit IDE este <a href="https://www.jetbrains.com/pycharm/download/#section=windows">PyCharm</a>
+            care are o variantă gratuită numită <em>Pycharm Community</em>
+        </p>
+
+        <h4>Atenție</h4>
+        <p>
+            Un fișier Python se poate deschide în două moduri: text sau "executabil". Pentru a deschide text (și a vedea
+            codul) se pot folosi editoarele menționate mai sus. Pentru a executa (<strong>același fișier</strong>) se va
+            deschide cu IDLE și se va da Run sau direct cu Python.
+        </p>
+
+        <h4>Află mai multe</h4>
+        <ul>
+            <li>
+                <a href="https://youtu.be/x7X9w_GIm1s">Python</a> in 100 seconds.
+            </li>
+            <li>
+                <a href="https://www.w3schools.com/python/">Tutorial</a> Python.
+            </li>
+            <li>
+                <a href="https://docs.python.org/3/">Documentație</a> ~ în principiu tot ce ai nevoie.
+            </li>
+        </ul>
     </div>
 </div>
+<hr>
+<div id="code">
+    <h3>Codul sursă</h3>
+    <div id="info">
+        <h4>Direct din GitHub</h4>
+        <p>Poți vizualiza și copia <a href="https://github.com/davidAnicca/AlgEvolutiviCNMV">codul</a> de pe GitHub.</p>
+        <p>În folderul proiectului trebuie să se afle toate cele trei fișiere: </p>
+        <pre>
+            <code class="hljs-string">
+                └■|
+                  |
+                  └■|
+                    └■ genetic_chords.py
+                    └■ main.py
+                    └■ play.py
+            </code>
+        </pre>
+        <p>Programul principal este <em>main.py</em>, care dă drumul la treabă.</p>
 
+        <h4>Comportament</h4>
+        <p>Atunci când rulează programul, se întâmplă următoarele lucruri:</p>
+        <ol>
+            <li>Se aud 3 sunete dubioase (primele 3 acorduri generate aleatoriu, pentru exemplificare).</li>
+            <li>Se afișează in consolă generația curentă.</li>
+            <li>În funcție de numărul de generații completat ca parametru în funcția apelată, la final se va auzi
+                acordul cel mai bun (numărul de generații este setat implicit la 50).
+            </li>
+        </ol>
+    </div>
+
+    <hr>
+
+    <div>
+        <h3>Final</h3>
+        <div class="info">
+            <p>
+                Vă mulțumesc pentru atenție și sper că ați înțeles esența acestui subiect. Pentru orice întrebări vă
+                aștept cu un mail la <a href="mailto:meresan02david1006@gmail.com">meresan02david1006@gmail.com</a>.
+            </p>
+
+            <p>Doresc să le mulțumesc profesorilor care m-au susținut în acest proiect:</p>
+            <pre>
+                <code class="hljs-string">
+                    ┌ Colegiul Național "Mihai Viteazul" Turda:
+                    |    └■ Prof. Ligia Mînican
+                    └■ Facultatea de Matematică și Informatică UBB Cluj:
+                         ├■ Lect. MIRCEA Ioan Gabriel
+                         ├■ Drd. SIMA Ioan
+                         └■ Prof. DIOSAN Laura
+                </code>
+            </pre>
+
+            <h4>Află mai multe:</h4>
+            <ul>
+                <li>
+                    <a href="https://www.youtube.com/watch?v=cyW5z-M2yzw">Music And Measure Theory</a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/watch?v=1Hqm0dYKUx4">Why It's Impossible to Tune a Piano</a>
+                </li>
+                <li>
+                    <a href="https://www.ibm.com/topics/deep-learning">What is deep learning : IBM</a>
+                </li>
+            </ul>
+
+        </div>
+        <hr>
+        <div class="info">
+            <h4>Despre mine:</h4>
+            <ul>
+                <li>
+                    <a href="https://www.linkedin.com/in/david-curu%C8%9Biu-mere%C8%99an-b43a6813b">LinkedIn</a>
+                </li>
+                <li>
+                    <a href="https://github.com/davidAnicca">GitHub</a>
+                </li>
+                <li>
+                    <a href="https://bmc.link/anicca">Ia-mi o cafea</a> ☕
+                </li>
+            </ul>
+        </div>
+        <hr>
+    </div>
+
+    <img width="100%"
+         src="https://i.gifer.com/BLkE.gif"
+         alt="sine wave">
+    <hr>
+</div>
+
+<p style="text-align: center">
+    <strong>Curuțiu-Mereșan David 2023</strong>
+</p>
+<p style="text-align: center">
+    Colegiul Național "Mihai Viteazul" Turda
+</p>
+<p style="text-align: center">
+    Facultatea de Matematică și Informatică UBB Cluj
+</p>
 
 </body>
 </html>
